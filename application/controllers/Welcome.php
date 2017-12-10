@@ -20,6 +20,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        $res = $this->db->query("select * from dht22 limit 10");
+        $rows = $res->result_array();
+        $this->load->view('v_main', array("data" => $rows));
 	}
 }
