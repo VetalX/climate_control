@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Line Chart</title>
+    <title>Weather station</title>
     <script src="/static/js/jquery-3.2.1.min.js"></script>
     <script src="/static/js/Chart.bundle.js"></script>
     <script src="/static/js/utils.js"></script>
@@ -26,6 +26,10 @@
 <body>
     <input type="button" id="refresh_btn" value="Обновить" />
     <input type="text" id="datepicker">
+    <h2>
+        Температура: <span id="temperature"></span>&deg;<br>
+        Влажность: <span id="humidity"></span>%
+    </h2>
     <div style="width:100%;">
         <canvas id="canvas"></canvas>
     </div>
@@ -95,6 +99,10 @@
 
 
                     var data_js = JSON.parse(data);
+                    
+                    $("#temperature").html(data_js[data_js.length-1].temperature),
+                    $("#humidity").html(data_js[data_js.length-1].humidity),
+                    
                     $(data_js).each(function(i, item){
                         config.data.labels.push(item.time);
                         config.data.datasets[0].data.push(item.temperature);
