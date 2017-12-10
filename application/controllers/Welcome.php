@@ -20,8 +20,20 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-        $res = $this->db->query("select * from dht22 limit 10");
-        $rows = $res->result_array();
-        $this->load->view('v_main', array("data" => $rows));
+        
+        $this->load->view('v_main');
 	}
+    
+    function get_data($dt = ""){
+        if(empty($dt)) $dt = date("Y-m-d");
+        $sql = "select temperature, 
+                       humidity,
+                       to_char(dt, 'hh24:mi') as time
+                from dht22
+                where dt between ? and ? 
+                order by dt;";
+        $res = $this->db->query($sql, array($dt." 00:00:00", $dt." 23:59:59"));
+        $rows = $res->result_array();
+        echo json_encode($rows);
+    }
 }
