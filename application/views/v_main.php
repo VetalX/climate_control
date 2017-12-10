@@ -33,7 +33,7 @@
         $(document).ready(function() {
             function get_data(){
                 var dt = $("#datepicker").val();
-                $.get("/welcome/get_data/"+dt, function(data){
+                $.get("/?c=welcome&m=get_data&dt="+dt, function(data){
                     var config = {
                         type: 'line',
                         data: {

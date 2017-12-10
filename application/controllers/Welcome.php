@@ -25,7 +25,11 @@ class Welcome extends CI_Controller {
 	}
     
     function get_data($dt = ""){
-        if(empty($dt)) $dt = date("Y-m-d");
+        if(!empty($_GET['dt'])) {
+            $dt = $_GET['dt'];
+        } elseif(empty($dt)) {
+            $dt = date("Y-m-d");
+        }
         $sql = "select temperature, 
                        humidity,
                        to_char(dt, 'hh24:mi') as time
