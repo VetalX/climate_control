@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Weather station</title>
+    <title>Climate control</title>
     <script src="/static/js/jquery-3.2.1.min.js"></script>
     <script src="/static/js/Chart.bundle.js"></script>
     <script src="/static/js/utils.js"></script>
