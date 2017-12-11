@@ -30,7 +30,7 @@
         Температура: <span id="temperature"></span>&deg;<br>
         Влажность: <span id="humidity"></span>%
     </h2>
-    <div style="width:100%;">
+    <div style="width:75%;">
         <canvas id="canvas"></canvas>
     </div>
     <script>
